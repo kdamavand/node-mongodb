@@ -3,10 +3,15 @@ const bodyParser = require("body-parser");
 //const cors = require("cors");
 const helmet = require('helmet');
 const morgan =  require('morgan');
+const dotenv = require('dotenv');
+dotenv.config()
+//const { MONGODB_URI } = process.env
 //const middlewares = require('../config/middlewares.js');
 
 const app = express();
+//dotenv.config()
 
+//const MONGODB_URI = process.env.MONGODB_URI;
 /*var corsOptions = {
   origin: "http://localhost:8081"
 };
@@ -25,8 +30,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = require("./app/models");
+// set port, listen for requests
+const PORT = process.env.PORT || 5000;
+const MONGODB_URI = process.env.MONGODB_URI || db.url;
+
 db.mongoose
-  .connect(db.url, {
+  .connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -38,8 +47,7 @@ db.mongoose
     process.exit();
   });
 
-  // set port, listen for requests
-const PORT = process.env.PORT || 5000;
+  
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
