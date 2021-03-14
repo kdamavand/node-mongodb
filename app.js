@@ -1,9 +1,10 @@
+const http = require("http");
 const express = require("express");
 const mongoose = require("mongoose");
 const createError = require("http-errors");
 const bodyParser= require('body-parser');
 const config = require('./config');
-const env = process.env.NODE_ENV || 'test';
+const env = process.env.NODE_ENV || 'production';
 
 const app = express();
 app.use(bodyParser.json());
@@ -37,6 +38,20 @@ app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.status(err.status || 500);
   res.send(err);
+});
+// Start 
+const port = process.env.PORT || config.port;
+app.set("port", port);
+
+let server = http.createServer(app);
+server.listen(port);
+
+server.on("error", (err) => {
+  console.error(err);
+});
+
+server.on("listening", () => {
+  console.log(`Server listening on port ${port}`)
 });
 
 module.exports = app;

@@ -4,7 +4,7 @@ let app = require("../app");
 let http = require("http");
 const config = require('../config');
 
-let port = config.port;
+let port = process.env.PORT || config.port;
 app.set("port", port);
 
 let server = http.createServer(app);
