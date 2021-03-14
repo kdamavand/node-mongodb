@@ -6,7 +6,7 @@
   "scripts": {
     "bat": "pre.bat",
     "cls": "cls || clear",
-    "start": "node bin/www",
+    "start": "node app",
     "test": "mocha './tests/*.test.js'",
     "coverage": "npm run bat && nyc --reporter=html --reporter=text npm test"
   },
