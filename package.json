@@ -4,12 +4,12 @@
   "description": "Node.js Restful API with Node.js, Express and MongoDB",
   "main": "app.js",
   "scripts": {
-    "bat": "pre.bat",
-    "cls": "cls || clear",
-    "start": "node app",
+    "start": "node app.js",
     "test": "mocha './tests/*.test.js'",
-    "coverage": "npm run bat && nyc --reporter=html --reporter=text npm test"
+    "coverage": "npm run bat && nyc --reporter=html --reporter=text npm test",
+    "build": "webpack"
   },
+  "heroku-run-build-script": true,
   "keywords": [
     "nodejs",
     "express",
