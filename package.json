@@ -9,7 +9,6 @@
     "coverage": "npm run bat && nyc --reporter=html --reporter=text npm test",
     "build": "webpack"
   },
-  "heroku-run-build-script": true,
   "keywords": [
     "nodejs",
     "express",
