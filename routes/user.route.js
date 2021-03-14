@@ -4,7 +4,7 @@ const controller = require("../controllers/user.controller");
 
 router
   .route("/")
-  .get(controller.getAllUsers)
+  .get(cors(), controller.getAllUsers)
   .post(controller.createUser);
 router
   .route("/:id")
